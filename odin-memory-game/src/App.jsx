@@ -4,8 +4,10 @@ import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
 import mockCharacters from "./data/characters.json";
 import { retrieveName, getRandomItems, scoreData } from "./utils";
+import { Display } from "./display";
 
 function App() {
+  const display = Display();
   const [score, setScore] = useState(0);
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -46,6 +48,11 @@ function App() {
   if (loading) return <div className="message loading">Loading...</div>;
   if (error) return <div className="message error">Error: {error}</div>;
 
+  const onClick = () => {
+    setScore(score + 1);
+
+  }
+
   return (
     <>
       <Scoreboard scoreData={scoreData}></Scoreboard>
@@ -55,6 +62,7 @@ function App() {
             key={character.id}
             imgSrc={character.image}
             imgTitle={retrieveName(character.image)}
+            onClick={onClick}
           ></Card>
         ))}
       </div>
