@@ -26,10 +26,22 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  gap: 1.5em;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
 .card {
   width: 200px;
   height: 250px;
   border: 1px solid black;
+  border-radius: 15px;
 }
 
 .card-face,
@@ -41,6 +53,12 @@
 .card-face {
   display: grid;
   grid-template-rows: 1fr auto;
+}
+
+.card-face > img {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 100%;
+  object-fit: contain;
 }
 
 .card-back > img {
