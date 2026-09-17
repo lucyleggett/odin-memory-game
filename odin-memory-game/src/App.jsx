@@ -3,17 +3,12 @@ import "./App.css";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
 import mockCharacters from "./data/characters.json";
+import { retrieveName } from "./utils";
 
 let scoreData = {
   current: 0,
   previous: [0],
 };
-
-function retrieveName(url) {
-  const parts = url.split("_");
-  if (parts.length < 2) return url;
-  return parts[1].split(".png")[0];
-}
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -40,6 +35,7 @@ function App() {
           throw new Error(`HTTP error. Status: ${response.status}`);
         const data = await response.json();
         const filteredData = data.filter((item) => item.image.includes("_"));
+        console.log(filteredData)
         setCharacters(filteredData);
       } catch (error) {
         setError(error.message);
@@ -52,7 +48,6 @@ function App() {
 
   if (loading) return <div className="message loading">Loading...</div>;
   if (error) return <div className="message error">Error: {error}</div>;
-  console.log(characters);
 
   return (
     <>

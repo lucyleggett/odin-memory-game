@@ -8,6 +8,11 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     server: {
       proxy: {
+        "/sanrio-assets": {
+          target: "https://sanrio.co.jp",
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/sanrio-assets/, ""),
+        },
         "/api-sanrio": {
           target:
             "https://api.parse.bot/scraper/671b3e36-0d6a-4074-8c11-d9bcd991c3fd/",
