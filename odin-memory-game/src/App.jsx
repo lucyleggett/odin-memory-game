@@ -35,7 +35,6 @@ function App() {
           throw new Error(`HTTP error. Status: ${response.status}`);
         const data = await response.json();
         const filteredData = data.filter((item) => item.image.includes("_"));
-        console.log(filteredData)
         setCharacters(filteredData);
       } catch (error) {
         setError(error.message);
@@ -48,6 +47,8 @@ function App() {
 
   if (loading) return <div className="message loading">Loading...</div>;
   if (error) return <div className="message error">Error: {error}</div>;
+
+  console.log(characters.map(character => retrieveName(character.image)));
 
   return (
     <>
