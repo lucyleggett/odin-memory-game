@@ -3,46 +3,10 @@ import "./App.css";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
 import mockCharacters from "./data/characters.json";
-import { retrieveName } from "./utils";
-
-let scoreData = {
-  current: 0,
-  previous: [0],
-};
-
-const cardWrappers = document.querySelectorAll(".card-wrapper");
-
-cardWrappers.forEach((wrapper) =>
-  wrapper.addEventListener("mousemove", (e) => {
-    const card = wrapper.querySelector(".card");
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const xc = x - rect.width / 2;
-    const yc = y - rect.height / 2;
-
-    const px = (x / rect.width) * 100;
-    const py = (y / rect.height) * 100;
-
-    card.style.setProperty("--x", `${px}%`);
-    card.style.setProperty("--y", `${py}%`);
-    card.style.setProperty("--rx", `${-yc / 10}deg`);
-    card.style.setProperty("--ry", `${xc / 10}deg`);
-    card.style.setProperty("--o", "1");
-  }),
-);
-
-cardWrappers.forEach((wrapper) =>
-  wrapper.addEventListener("mouseleave", () => {
-    const card = wrapper.querySelector(".card");
-    card.style.setProperty("--rx", "0deg");
-    card.style.setProperty("--ry", "0deg");
-    card.style.setProperty("--o", "0");
-  }),
-);
+import { retrieveName, getRandomItems, scoreData } from "./utils";
 
 function App() {
+  const [score, setScore] = useState(0);
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -57,7 +21,8 @@ function App() {
           const filteredMockData = mockCharacters.characters.filter((item) =>
             item.image.includes("_"),
           );
-          setCharacters(filteredMockData);
+          const randomisedChars = getRandomItems(filteredMockData);
+          setCharacters(randomisedChars);
           return;
         }
 
@@ -67,7 +32,8 @@ function App() {
           throw new Error(`HTTP error. Status: ${response.status}`);
         const data = await response.json();
         const filteredData = data.filter((item) => item.image.includes("_"));
-        setCharacters(filteredData);
+        const randomisedChars = getRandomItems(filteredData);
+        setCharacters(randomisedChars);
       } catch (error) {
         setError(error.message);
       } finally {
