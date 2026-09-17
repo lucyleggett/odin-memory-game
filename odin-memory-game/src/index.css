@@ -11,19 +11,31 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --cursive: "Crafty Girls", cursive;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  /* letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
+  font: 18px/145% var(--cursive);
+  background-color: rgb(246, 220, 247);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.scoreboard {
+  display: flex;
+  gap: 2em;
+  padding: 0 1em;
+  align-self: flex-end;
 }
 
 .cards-container {
@@ -88,7 +100,7 @@ button {
   transition: transform 0.1s ease-out;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, 0.6) 0px 7px 29px 0px;
 }
 
 .glare-wrapper {
@@ -110,7 +122,13 @@ button {
   inset: 0;
   background: linear-gradient(
     135deg,
-    #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #8b00ff
   );
   background-size: 400% 400%;
   background-position: var(--x, 50%) var(--y, 50%);
