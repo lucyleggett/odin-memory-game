@@ -1,20 +1,57 @@
-import helloKittyBow from "../assets/hello-kitty-red-bow-800x800.png"
+import { useRef } from "react";
+import helloKittyBow from "../assets/hello-kitty-red-bow-800x800.png";
 
 export default function Card({ imgSrc, imgTitle }) {
+  const cardRef = useRef(null);
+  const wrapperRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xc = x - rect.width / 2;
+    const yc = y - rect.height / 2;
+    const px = (x / rect.width) * 100;
+    const py = (y / rect.height) * 100;
+
+    card.style.setProperty("--x", `${px}%`);
+    card.style.setProperty("--y", `${py}%`);
+    card.style.setProperty("--rx", `${-yc / 10}deg`);
+    card.style.setProperty("--ry", `${xc / 10}deg`);
+    card.style.setProperty("--o", "1");
+  };
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+    card.style.setProperty("--o", "0");
+  };
+
   return (
-    <div className="card-wrapper">
-      <div className="card">
-          <div className="card-content">
-              <button className="card-face">
-                <img src={imgSrc} alt="" />
-                <span className="image-title">{imgTitle}</span>
-              </button>
-              <div className="card-back hidden">
-                <img src={helloKittyBow} alt="Hello Kitty's red bow" />
-              </div>
+    <div
+      className="card-wrapper"
+      ref={wrapperRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="card" ref={cardRef}>
+        <div className="card-content">
+          <button className="card-face">
+            <img src={imgSrc} alt="" />
+            <span className="image-title">{imgTitle}</span>
+          </button>
+          <div className="card-back hidden">
+            <img src={helloKittyBow} alt="Hello Kitty's red bow" />
           </div>
-          <div className="glare-wrapper"></div>
-          <div className="holo-wrapper"></div>
+        </div>
+        <div className="glare-wrapper"></div>
+        <div className="holo-wrapper"></div>
       </div>
     </div>
   );
