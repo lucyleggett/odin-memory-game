@@ -1,0 +1,184 @@
+{
+  "characters": [
+    {
+      "id": "1",
+      "name": "",
+      "image": "https://shop.sanrio.co.jp/photo/color/01_hellokitty.png"
+    },
+    {
+      "id": "2",
+      "name": "",
+      "image": "https://shop.sanrio.co.jp/photo/color/02_mymelody.png"
+    },
+    {
+      "id": "3",
+      "name": "",
+      "image": "https://shop.sanrio.co.jp/photo/color/03_littletwinstars.png"
+    },
+    {
+      "id": "4",
+      "name": "",
+      "image": "https://shop.sanrio.co.jp/photo/color/04_pompompurin.png"
+    },
+    {
+      "id": "5",
+      "name": "",
+      "image": "https://shop.sanrio.co.jp/photo/color/05_cinnamoroll.png"
+    },
+    {
+      "id": "12",
+      "name": "",
+      "image": "https://shop.sanrio.co.jp/photo/color/14_kuromi.png"
+    },
+    {
+      "id": "9",
+      "name": "",
+      "image": "https://shop.sanrio.co.jp/photo/color/09_pochacco.png"
+    },
+    {
+      "id": "28",
+      "name": "",
+      "image": "https://shop.sanrio.co.jp/photo/color/11_hangyodon.png"
+    },
+    {
+      "id": "8",
+      "name": "タキシードサム",
+      "image": "https://shop.sanrio.co.jp/photo/color/08_tuxedosam.png"
+    },
+    {
+      "id": "7",
+      "name": "けろけろけろっぴ",
+      "image": "https://shop.sanrio.co.jp/photo/color/07_kerokerokeroppi.png"
+    },
+    {
+      "id": "10",
+      "name": "バッドばつ丸",
+      "image": "https://shop.sanrio.co.jp/photo/color/12_badbadtzmaru.png"
+    },
+    {
+      "id": "37",
+      "name": "あひるのペックル",
+      "image": "https://shop.sanrio.co.jp/photo/color/10_ahirunopekkle.png"
+    },
+    {
+      "id": "6",
+      "name": "ぐでたま",
+      "image": "https://shop.sanrio.co.jp/photo/color/06_gudetama.png"
+    },
+    {
+      "id": "39",
+      "name": "マイスウィートピアノ",
+      "image": "https://shop.sanrio.co.jp/photo/color/26_mysweetpiano.png"
+    },
+    {
+      "id": "35",
+      "name": "ウィッシュミーメル",
+      "image": "https://shop.sanrio.co.jp/photo/color/15_wishmemell.png"
+    },
+    {
+      "id": "36",
+      "name": "こぎみゅん",
+      "image": "https://shop.sanrio.co.jp/photo/color/16_cogimyun.png"
+    },
+    {
+      "id": "1053",
+      "name": "はなまるおばけ",
+      "image": "https://shop.sanrio.co.jp/photo/color/45_hanamaruobake.png"
+    },
+    {
+      "id": "1055",
+      "name": "がおぱわるぅ",
+      "image": "https://shop.sanrio.co.jp/photo/color/53_gaopowerroo.png"
+    },
+    {
+      "id": "17",
+      "name": "ぼんぼんりぼん",
+      "image": "https://shop.sanrio.co.jp/photo/color/20_bonbonribbon.png"
+    },
+    {
+      "id": "64",
+      "name": "ディアダニエル",
+      "image": "https://shop.sanrio.co.jp/photo/color/dn.png"
+    },
+    {
+      "id": "40",
+      "name": "チャーミーキティ",
+      "image": "https://shop.sanrio.co.jp/photo/color/52_charmmykitty.png"
+    },
+    {
+      "id": "16",
+      "name": "まるもふびより",
+      "image": "https://shop.sanrio.co.jp/photo/color/19_marumofubiyori.png"
+    },
+    {
+      "id": "26",
+      "name": "コロコロクリリン",
+      "image": "https://shop.sanrio.co.jp/photo/color/28_corocorokuririn.png"
+    },
+    {
+      "id": "15",
+      "name": "マロンクリーム",
+      "image": "https://shop.sanrio.co.jp/photo/color/18_marroncream.png"
+    },
+    {
+      "id": "29",
+      "name": "シュガーバニーズ",
+      "image": "https://shop.sanrio.co.jp/photo/color/si.png"
+    },
+    {
+      "id": "41",
+      "name": "ウサハナ",
+      "image": "https://shop.sanrio.co.jp/photo/color/51_usahana.png"
+    },
+    {
+      "id": "45",
+      "name": "マシュマロみたいなふわふわにゃんこ",
+      "image": "https://shop.sanrio.co.jp/photo/color/54_mashumaromitainafuwafuwanyanko.png"
+    },
+    {
+      "id": "57",
+      "name": "チョコキャット",
+      "image": "https://shop.sanrio.co.jp/photo/color/41_chococat.png"
+    },
+    {
+      "id": "1124",
+      "name": "チアリステイルズ",
+      "image": "https://shop.sanrio.co.jp/photo/color/50_CT.png"
+    },
+    {
+      "id": "1013",
+      "name": "JOCHUM",
+      "image": "https://shop.sanrio.co.jp/photo/color/JOCHUM.png"
+    },
+    {
+      "id": "24",
+      "name": "サンリオキャラクターズ",
+      "image": "https://shop.sanrio.co.jp/photo/color/24_sanriocharacters.png"
+    },
+    {
+      "id": "25",
+      "name": "その他キャラクター",
+      "image": "https://shop.sanrio.co.jp/photo/color/29_othercharacters.png"
+    },
+    {
+      "id": "33",
+      "name": "アイムドラえもん",
+      "image": "https://shop.sanrio.co.jp/photo/color/0033.png"
+    },
+    {
+      "id": "1061",
+      "name": "にゃんたじあ！",
+      "image": "https://shop.sanrio.co.jp/photo/color/240724_NY.png"
+    },
+    {
+      "id": "1072",
+      "name": "ミスターメン リトルミス",
+      "image": "https://shop.sanrio.co.jp/photo/color/d66b3e2c934299f1346db148111713e0.png"
+    },
+    {
+      "id": "168",
+      "name": "スヌーピー",
+      "image": "https://shop.sanrio.co.jp/photo/color/0706SN.png"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api-sanrio/list_characters", "destination": "/api/sanrio/list_characters" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

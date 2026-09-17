@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -24,4 +24,31 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+} */
+
+.card {
+  width: 200px;
+  height: 250px;
+  border: 1px solid black;
+}
+
+.card-face,
+.card-back {
+  width: 100%;
+  height: 100%;
+}
+
+.card-face {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.card-back > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hidden {
+  display: hidden;
 }
