@@ -134,8 +134,11 @@ button {
 .holo-wrapper {
   position: absolute;
   inset: 0;
+  height: 100%;
+  width: 100%;
   pointer-events: none;
   backface-visibility: hidden;
+  border-radius: 16px;
 }
 
 .glare-wrapper {
@@ -166,5 +169,5 @@ button {
   opacity: 0.15;
   mix-blend-mode: color-dodge;
   border-radius: 15px;
-  transform: translateZ(2px); 
+  transform: translateZ(2px);
 }

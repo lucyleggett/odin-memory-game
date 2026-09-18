@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
-// import mockCharacters from "./data/characters.json";
+import mockCharacters from "./data/characters.json";
 import { retrieveName, getRandomItems, filterCharacters } from "./utils";
 
 function App() {
@@ -19,14 +19,12 @@ function App() {
     const fetchCharacters = async () => {
       try {
         setLoading(true);
-        // if (import.meta.env.DEV) {
-        //   const filteredMockData = mockCharacters.characters.filter((item) =>
-        //     item.image.includes("_"),
-        //   );
-        //   const randomisedChars = getRandomItems(filteredMockData);
-        //   setCharacters(randomisedChars);
-        //   return;
-        // }
+        if (import.meta.env.DEV) {
+          const filteredMockData = filterCharacters(mockCharacters.characters);
+          const randomisedChars = getRandomItems(filteredMockData);
+          setCharacters(randomisedChars);
+          return;
+        }
 
         const response = await fetch(API_ENDPOINT);
 
