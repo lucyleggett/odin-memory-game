@@ -38,6 +38,10 @@ export function retrieveName(url) {
   return characterMap[rawName];
 }
 
+export function filterCharacters(data) {
+  return data.filter((item) => item.image.includes("_") && !item.image.includes("characters"));
+}
+
 export function getRandomItems(array, num = 12) {
   const shuffled = [...array];
 

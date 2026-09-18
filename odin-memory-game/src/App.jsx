@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
-import mockCharacters from "./data/characters.json";
-import { retrieveName, getRandomItems } from "./utils";
+// import mockCharacters from "./data/characters.json";
+import { retrieveName, getRandomItems, filterCharacters } from "./utils";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -19,22 +19,23 @@ function App() {
     const fetchCharacters = async () => {
       try {
         setLoading(true);
-        if (import.meta.env.DEV) {
-          const filteredMockData = mockCharacters.characters.filter((item) =>
-            item.image.includes("_"),
-          );
-          const randomisedChars = getRandomItems(filteredMockData);
-          setCharacters(randomisedChars);
-          return;
-        }
+        // if (import.meta.env.DEV) {
+        //   const filteredMockData = mockCharacters.characters.filter((item) =>
+        //     item.image.includes("_"),
+        //   );
+        //   const randomisedChars = getRandomItems(filteredMockData);
+        //   setCharacters(randomisedChars);
+        //   return;
+        // }
 
         const response = await fetch(API_ENDPOINT);
 
         if (!response.ok)
           throw new Error(`HTTP error. Status: ${response.status}`);
         const data = await response.json();
-        const filteredData = data.filter((item) => item.image.includes("_"));
+        const filteredData = filterCharacters(data.data.characters);
         const randomisedChars = getRandomItems(filteredData);
+
         setCharacters(randomisedChars);
       } catch (error) {
         setError(error.message);
