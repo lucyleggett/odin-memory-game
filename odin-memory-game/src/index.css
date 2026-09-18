@@ -42,6 +42,31 @@ body {
   margin: 0;
 }
 
+.loading-screen,
+.error-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  font-family: "Press Start 2P", system-ui;
+  padding: 1em;
+}
+
+.message {
+  padding: 1em;
+}
+
+.loading-screen > img {
+  display: flex;
+  width: clamp(50px, 50vw, 300px);
+}
+
+.error-screen > img {
+  display: flex;
+  height: clamp(50px, 50vw, 300px);
+}
+
 .scoreboard {
   display: flex;
   gap: 2em;
@@ -178,6 +203,19 @@ button {
 }
 
 @media screen and (max-width: 600px) {
+  #root {
+    justify-content: center;
+  }
+  .loading-screen,
+  .error-screen {
+    justify-content: center;
+  }
+
+  .error-screen > img{
+    width: 100%;
+    height: auto;
+  }
+
   .cards-container {
     grid-template-columns: repeat(3, minmax(0, 120px));
     justify-content: center;
