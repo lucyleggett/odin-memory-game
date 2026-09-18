@@ -39,7 +39,7 @@ export function retrieveName(url) {
 }
 
 export function filterCharacters(data) {
-  return data.filter((item) => item.image.includes("_") && !item.image.includes("characters"));
+  return data.filter((item) => item.image.includes("_") && !item.image.includes("characters") && item.image.length < 65);
 }
 
 export function getRandomItems(array, num = 12) {
