@@ -39,13 +39,14 @@ export default function Card({
   };
 
   return (
-    <div
-      className="card-wrapper"
-      ref={wrapperRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="card" {...rest} ref={cardRef}>
+    <div className="card-wrapper" ref={wrapperRef}>
+      <div
+        className="card"
+        {...rest}
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         <button className="card-face" onClick={handleCardSelection}>
           <img src={imgSrc} alt="" />
           <span className="image-title">{imgTitle}</span>
