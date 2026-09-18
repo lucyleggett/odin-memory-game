@@ -38,11 +38,6 @@ export function retrieveName(url) {
   return characterMap[rawName];
 }
 
-export let scoreData = {
-  current: 0,
-  previous: [],
-};
-
 export function getRandomItems(array, num = 12) {
   const shuffled = [...array];
 

@@ -22,6 +22,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@property --flip {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -49,19 +55,21 @@ button {
   background-color: transparent;
 }
 
-.card-content {
-  display: grid;
-  grid-template: 1 1;
-  width: 200px;
-  height: 250px;
-  border-radius: 15px;
+.card-face,
+.card-back,
+.glare-wrapper,
+.holo-wrapper {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
 }
 
 .card-face,
 .card-back {
-  grid-area: 1 / 1 / 2 / 2;
-  width: 100%;
-  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: rgba(100, 100, 111, 0.6) 0px 7px 29px 0px;
 }
 
 .card-face {
@@ -69,6 +77,18 @@ button {
   align-items: center;
   grid-template-rows: 1fr auto;
   padding: 1em;
+  transform: translateZ(1px);
+}
+
+.card-back {
+  transform: rotateY(180deg) translateZ(1px);
+  background-color: pink;
+}
+
+.card-back > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .card-face > img {
@@ -83,29 +103,42 @@ button {
   font-size: 16px;
 }
 
-.card-back > img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .card-wrapper {
   perspective: 1000px;
 }
 
 .card {
   position: relative;
-  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  width: 200px;
+  height: 250px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  transform: rotateX(var(--rx, 0deg))
+    rotateY(calc(var(--ry, 0deg) + var(--flip, 0deg)));
   transform-style: preserve-3d;
-  transition: transform 0.1s ease-out;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: rgba(100, 100, 111, 0.6) 0px 7px 29px 0px;
+  transition:
+    transform 0.1s ease-out,
+    --flip 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card.is-flipping {
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card.is-flipped {
+  --flip: 180deg;
+}
+
+.glare-wrapper,
+.holo-wrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  backface-visibility: hidden;
 }
 
 .glare-wrapper {
-  position: absolute;
-  inset: 0;
   background: radial-gradient(
     circle at var(--x, 50%) var(--y, 50%),
     rgba(255, 255, 255, 0.8) 0%,
@@ -114,12 +147,10 @@ button {
   );
   opacity: var(--o, 0);
   mix-blend-mode: overlay;
-  pointer-events: none;
+  transform: translateZ(3px);
 }
 
 .holo-wrapper {
-  position: absolute;
-  inset: 0;
   background: linear-gradient(
     135deg,
     #ff0000,
@@ -134,9 +165,6 @@ button {
   background-position: var(--x, 50%) var(--y, 50%);
   opacity: 0.15;
   mix-blend-mode: color-dodge;
-  pointer-events: none;
-}
-
-.hidden {
-  display: none;
+  border-radius: 15px;
+  transform: translateZ(2px); 
 }
