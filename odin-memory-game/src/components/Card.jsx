@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import helloKittyBow from "../assets/hello-kitty-red-bow-800x800.png";
+// import helloKittyBow from "../assets/hello-kitty-red-bow-800x800.png";
+import pochaccoBg from "../assets/pochacco-bg.jpeg";
 
 export default function Card({
   imgSrc,
@@ -52,7 +53,7 @@ export default function Card({
           <span className="image-title">{imgTitle}</span>
         </button>
         <div className="card-back">
-          <img src={helloKittyBow} alt="Hello Kitty's red bow" />
+          <img src={pochaccoBg} alt="Pochacco playing hula hoop outside" />
         </div>
         <div className="glare-wrapper"></div>
         <div className="holo-wrapper"></div>

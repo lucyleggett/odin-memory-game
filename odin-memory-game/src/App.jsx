@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
-// import mockCharacters from "./data/characters.json";
+import Screen from "./components/Screen";
+import mockCharacters from "./data/characters.json";
 import { retrieveName, getRandomItems, filterCharacters } from "./utils";
-import helloKittyDancinGif from "./assets/hello-kitty-dancing.gif";
+import helloKittyCoffeeGif from "./assets/hello-kitty-coffee.gif";
+import helloKittyDancingGif from "./assets/hello-kitty-dancing.gif";
 import gudetamaGif from "./assets/gudetama.gif";
+import kuromiSadGif from "./assets/kuromi-sad.gif";
 
 function App() {
+  const [count, setCount] = useState(0);
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,12 +25,12 @@ function App() {
     const fetchCharacters = async () => {
       try {
         setLoading(true);
-        // if (import.meta.env.DEV) {
-        //   const filteredMockData = filterCharacters(mockCharacters.characters);
-        //   const randomisedChars = getRandomItems(filteredMockData);
-        //   setCharacters(randomisedChars);
-        //   return;
-        // }
+        if (import.meta.env.DEV) {
+          const filteredMockData = filterCharacters(mockCharacters.characters);
+          const randomisedChars = getRandomItems(filteredMockData);
+          setCharacters(randomisedChars);
+          return;
+        }
 
         const response = await fetch(API_ENDPOINT);
 
@@ -44,24 +48,28 @@ function App() {
       }
     };
     fetchCharacters();
-  }, []);
+  }, [count]);
 
   if (loading)
     return (
-      <div className="loading-screen">
-        <img
-          src={helloKittyDancinGif}
-          alt="Pink Hello Kitty dancing surrounded by hearts"
-        />
-        <div className="message loading">Loading...</div>
-      </div>
+      <Screen
+        className="loading"
+        gif={helloKittyCoffeeGif}
+        gifAlt="Hello Kitty drinking coffee"
+        message="Loading..."
+        handleNextGame={null}
+      ></Screen>
     );
+
   if (error)
     return (
-      <div className="error-screen">
-        <div className="message error">Error: {error}</div>
-        <img src={gudetamaGif} alt="Gudetama hanging from chopsticks" />
-      </div>
+      <Screen
+        className="error"
+        gif={gudetamaGif}
+        gifAlt="Gudetama hanging from chopsticks"
+        message={`Error: ${error}`}
+        handleNextGame={null}
+      ></Screen>
     );
 
   const shuffleCards = () => {
@@ -89,9 +97,9 @@ function App() {
 
   const endGame = (isWin) => {
     if (isWin) {
-      alert("Congrats!");
+      document.querySelector(".winning.screen").classList.remove("hidden");
     } else {
-      alert("Tough luck...");
+      document.querySelector(".losing.screen").classList.remove("hidden");
     }
     setScore(0);
     setChosenCards([]);
@@ -122,6 +130,13 @@ function App() {
     }
   };
 
+  const handleNextGame = () => {
+    setCount(count + 1);
+    document.querySelector(".winning.screen").classList.add("hidden");
+    document.querySelector(".losing.screen").classList.add("hidden");
+    shuffleCards();
+  };
+
   return (
     <>
       <Scoreboard currentScore={score} highestScore={highestScore}></Scoreboard>
@@ -136,6 +151,20 @@ function App() {
           ></Card>
         ))}
       </div>
+      <Screen
+        className="winning"
+        gif={helloKittyDancingGif}
+        gifAlt="Pink Hello Kitty dancing surrounded by hearts"
+        message="Nice work!"
+        handleNextGame={handleNextGame}
+      ></Screen>
+      <Screen
+        className="losing"
+        gif={kuromiSadGif}
+        gifAlt="Kuromi hanging her head sadly"
+        message="Tough luck..."
+        handleNextGame={handleNextGame}
+      ></Screen>
     </>
   );
 }
