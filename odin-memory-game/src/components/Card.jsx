@@ -1,7 +1,12 @@
 import { useRef } from "react";
 import helloKittyBow from "../assets/hello-kitty-red-bow-800x800.png";
 
-export default function Card({ imgSrc, imgTitle }) {
+export default function Card({
+  imgSrc,
+  imgTitle,
+  handleCardSelection,
+  ...rest
+}) {
   const cardRef = useRef(null);
   const wrapperRef = useRef(null);
 
@@ -40,15 +45,13 @@ export default function Card({ imgSrc, imgTitle }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="card" ref={cardRef}>
-        <div className="card-content">
-          <button className="card-face">
-            <img src={imgSrc} alt="" />
-            <span className="image-title">{imgTitle}</span>
-          </button>
-          <div className="card-back hidden">
-            <img src={helloKittyBow} alt="Hello Kitty's red bow" />
-          </div>
+      <div className="card" {...rest} ref={cardRef}>
+        <button className="card-face" onClick={handleCardSelection}>
+          <img src={imgSrc} alt="" />
+          <span className="image-title">{imgTitle}</span>
+        </button>
+        <div className="card-back">
+          <img src={helloKittyBow} alt="Hello Kitty's red bow" />
         </div>
         <div className="glare-wrapper"></div>
         <div className="holo-wrapper"></div>

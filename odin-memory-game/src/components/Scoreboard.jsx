@@ -1,8 +1,8 @@
-export default function Scoreboard({ scoreData }) {
+export default function Scoreboard({ currentScore, highestScore }) {
   return (
     <div className="scoreboard">
-      <p>Current score: {scoreData.current}</p>
-      <p>Highest score: {scoreData.highest}</p>
+      <p>Current score: {currentScore}</p>
+      <p>Highest score: {highestScore}</p>
     </div>
   );
 }
