@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
 import Screen from "./components/Screen";
