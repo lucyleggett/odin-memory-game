@@ -25,6 +25,23 @@ export default defineConfig(({ mode }) => {
             });
           },
         },
+        "/sanrio-img": {
+          target: "https://shop.sanrio.co.jp",
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path) => path.replace(/^\/sanrio-img/, ""),
+          configure: (proxy) => {
+            proxy.on("proxyReq", (proxyReq) => {
+              proxyReq.setHeader("Referer", "https://shop.sanrio.co.jp/");
+              proxyReq.setHeader("Origin", "https://shop.sanrio.co.jp");
+              proxyReq.setHeader("Host", "shop.sanrio.co.jp");
+              proxyReq.setHeader(
+                "User-Agent",
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+              );
+            });
+          },
+        },
       },
     },
   };
