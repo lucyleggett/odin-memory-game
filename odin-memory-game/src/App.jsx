@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
-import mockCharacters from "./data/characters.json";
+// import mockCharacters from "./data/characters.json";
 import { retrieveName, getRandomItems, filterCharacters } from "./utils";
+import helloKittyDancinGif from "./assets/hello-kitty-dancing.gif";
+import gudetamaGif from "./assets/gudetama.gif";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -19,12 +21,12 @@ function App() {
     const fetchCharacters = async () => {
       try {
         setLoading(true);
-        if (import.meta.env.DEV) {
-          const filteredMockData = filterCharacters(mockCharacters.characters);
-          const randomisedChars = getRandomItems(filteredMockData);
-          setCharacters(randomisedChars);
-          return;
-        }
+        // if (import.meta.env.DEV) {
+        //   const filteredMockData = filterCharacters(mockCharacters.characters);
+        //   const randomisedChars = getRandomItems(filteredMockData);
+        //   setCharacters(randomisedChars);
+        //   return;
+        // }
 
         const response = await fetch(API_ENDPOINT);
 
@@ -44,8 +46,23 @@ function App() {
     fetchCharacters();
   }, []);
 
-  if (loading) return <div className="message loading">Loading...</div>;
-  if (error) return <div className="message error">Error: {error}</div>;
+  if (loading)
+    return (
+      <div className="loading-screen">
+        <img
+          src={helloKittyDancinGif}
+          alt="Pink Hello Kitty dancing surrounded by hearts"
+        />
+        <div className="message loading">Loading...</div>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="error-screen">
+        <div className="message error">Error: {error}</div>
+        <img src={gudetamaGif} alt="Gudetama hanging from chopsticks" />
+      </div>
+    );
 
   const shuffleCards = () => {
     const container = document.querySelector(".cards-container");
