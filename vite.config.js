@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
           rewrite: (path) => path.replace(/^\/api-sanrio/, ""),
           configure: (proxy, _options) => {
             proxy.on("proxyReq", (proxyReq, req, res) => {
-              proxyReq.setHeader("X-API-Key", env.VITE_PARSE_API_KEY);
+              proxyReq.setHeader("X-API-Key", env.PARSE_API_KEY);
               proxyReq.setHeader("Content-Type", "application/json");
             });
           },

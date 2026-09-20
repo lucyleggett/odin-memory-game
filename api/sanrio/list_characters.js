@@ -1,3 +1,6 @@
+const SCRAPER_URL =
+    "https://api.parse.bot/scraper/671b3e36-0d6a-4074-8c11-d9bcd991c3fd/list_characters";
+
 export default async function handler(req, res) {
     const apiKey = process.env.PARSE_API_KEY;
 
@@ -6,16 +9,13 @@ export default async function handler(req, res) {
     }
 
     try {
-        const parseResponse = await fetch(
-            `https://parse.bot`,
-            {
-                method: "GET",
-                headers: {
-                    "X-API-Key": apiKey,
-                    "Content-Type": "application/json",
-                },
+        const parseResponse = await fetch(SCRAPER_URL, {
+            method: "GET",
+            headers: {
+                "X-API-Key": apiKey,
+                "Content-Type": "application/json",
             },
-        );
+        });
 
         const textData = await parseResponse.text();
 

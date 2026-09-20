@@ -4,11 +4,6 @@
       "source": "/api-sanrio/list_characters",
       "destination": "/api/sanrio/list_characters"
     },
-    { "source": "/(.*)", "destination": "/index.html" },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
     {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
