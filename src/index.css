@@ -87,6 +87,7 @@ body {
   font-size: clamp(16px, 2vw, 18px);
   font-weight: 700;
   background-color: rgb(242, 100, 192);
+  color: var(--text-h);
   padding: 0.4em 0.8em;
   border-radius: 16px;
   box-shadow:
