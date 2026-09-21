@@ -1,15 +1,26 @@
 import { useRef } from "react";
-// import helloKittyBow from "../assets/hello-kitty-red-bow-800x800.png";
 import pochaccoBg from "../assets/pochacco-bg.jpeg";
 
 export default function Card({
   imgSrc,
   imgTitle,
   handleCardSelection,
+  isFlipped,
+  isFlipping,
+  noTransition,
   ...rest
 }) {
   const cardRef = useRef(null);
   const wrapperRef = useRef(null);
+
+  const classes = [
+    "card",
+    isFlipping && "is-flipping",
+    isFlipped && "is-flipped",
+    noTransition && "no-transition",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const handleMouseMove = (e) => {
     const card = cardRef.current;
@@ -42,7 +53,7 @@ export default function Card({
   return (
     <div className="card-wrapper" ref={wrapperRef}>
       <div
-        className="card"
+        className={classes}
         {...rest}
         ref={cardRef}
         onMouseMove={handleMouseMove}

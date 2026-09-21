@@ -207,6 +207,10 @@ button {
   --flip: 180deg;
 }
 
+.card.no-transition {
+  transition: none;
+}
+
 .glare-wrapper,
 .holo-wrapper {
   position: absolute;

@@ -3,12 +3,13 @@ export default function Screen({
   gif,
   gifAlt,
   message,
+  hidden,
   handleNextGame,
 }) {
   return (
     <>
       {handleNextGame && (
-        <div className={`${className} screen hidden`}>
+        <div className={`${className} screen ${hidden ? "hidden" : ""}`}>
           <div className="blur-overlay">
             <div className="conveyor">
               <img src={gif} alt={gifAlt} />
