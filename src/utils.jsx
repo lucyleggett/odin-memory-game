@@ -53,9 +53,7 @@ export function getRandomItems(array, num = 12) {
   return shuffled.slice(0, num);
 }
 
-export function proxyImageUrl(url) {
-    if (import.meta.env.DEV) {
-        return url.replace("https://shop.sanrio.co.jp", "/sanrio-img");
-    }
-    return url;
-};
+export function getImgSrc(imageUrl) {
+  const fileName = imageUrl.split("/").pop();
+  return `/assets/character-imgs/${fileName}`;
+}

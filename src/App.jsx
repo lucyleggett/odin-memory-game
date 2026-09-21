@@ -3,12 +3,7 @@ import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
 import Screen from "./components/Screen";
 import mockCharacters from "./data/characters.json";
-import {
-  retrieveName,
-  getRandomItems,
-  filterCharacters,
-  proxyImageUrl,
-} from "./utils";
+import { retrieveName, getRandomItems, filterCharacters, getImgSrc } from "./utils";
 import helloKittyCoffeeGif from "./assets/hello-kitty-coffee.gif";
 import helloKittyDancingGif from "./assets/hello-kitty-dancing.gif";
 import gudetamaGif from "./assets/gudetama.gif";
@@ -52,6 +47,7 @@ function App() {
 
         if (import.meta.env.DEV) {
           const filteredMockData = filterCharacters(mockCharacters.characters);
+          console.log(filteredMockData);
           randomisedChars = getRandomItems(filteredMockData);
         } else {
           const response = await fetch(API_ENDPOINT);
@@ -141,7 +137,7 @@ function App() {
     document.querySelector(".losing.screen").classList.add("hidden");
     shuffleCards();
   };
-
+  
   return (
     <>
       <Scoreboard currentScore={score} highestScore={highestScore}></Scoreboard>
@@ -150,7 +146,7 @@ function App() {
           <Card
             key={character.id}
             data-id={character.id}
-            imgSrc={proxyImageUrl(character.image)}
+            imgSrc={getImgSrc(character.image)}
             imgTitle={retrieveName(character.image)}
             handleCardSelection={handleCardSelection}
           ></Card>
