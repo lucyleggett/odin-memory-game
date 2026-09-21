@@ -16,6 +16,7 @@
   --mono: "Press Start 2P", system-ui;
 
   font: 18px/145% var(--cursive);
+  color: var(--text-h);
   background-color: rgb(246, 220, 247);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -178,6 +179,7 @@ button {
 .card-face > span {
   font-family: var(--cursive);
   font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--text-h);
 }
 
 .card-wrapper {
